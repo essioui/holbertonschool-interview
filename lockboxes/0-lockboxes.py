@@ -3,6 +3,7 @@
 Lockboxes
 """
 
+
 def canUnlockAll(boxes):
     """
     Can Unlock All
