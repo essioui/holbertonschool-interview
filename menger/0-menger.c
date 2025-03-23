@@ -1,35 +1,39 @@
 #include "menger.h"
 
 /**
- * @level:
+ * menger - draws a 2D Menger Sponge
+ * @level: 2D Menger Sponge
  */
 void menger(int level)
 {
-    if (level < 0)
-        return;
+	int size, x, y, i, j, draw;
 
-    int size = pow(3, level);
-    
-    for (int y = 0; y < size; y++)
-    {
-        for (int x = 0; x < size; x++)
-        {
-            int draw = 1;
-            int i = x, j = y;
+	if (level < 0)
+		return;
 
-            while (i > 0 || j > 0)
-            {
-                if (i % 3 == 1 && j % 3 == 1)
-                {
-                    draw = 0;
-                    break;
-                }
-                i /= 3;
-                j /= 3;
-            }
-            
-            printf(draw ? "#" : " ");
-        }
-        printf("\n");
-    }
+	size = pow(3, level); /* حساب حجم الإسفنج (3^N) */
+
+	for (y = 0; y < size; y++)
+	{
+		for (x = 0; x < size; x++)
+		{
+			draw = 1;
+			i = x;
+			j = y;
+
+			while (i > 0 || j > 0)
+			{
+				if (i % 3 == 1 && j % 3 == 1)
+				{
+					draw = 0;
+					break;
+				}
+				i /= 3;
+				j /= 3;
+			}
+
+			printf("%c", draw ? '#' : ' ');
+		}
+		printf("\n");
+	}
 }
