@@ -14,13 +14,13 @@ avl_t *build_avl(int *array, int start, int end, avl_t *parent)
     avl_t *root;
 
     if (start > end)
-        return (NULL);
+    return (NULL);
 
     mid = (start + end) / 2;
 
     root = malloc(sizeof(avl_t));
     if (!root)
-        return (NULL);
+    return (NULL);
 
     root->n = array[mid];
     root->parent = parent;
@@ -39,7 +39,7 @@ avl_t *build_avl(int *array, int start, int end, avl_t *parent)
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
     if (!array || size == 0)
-        return (NULL);
+    return (NULL);
 
     return (build_avl(array, 0, (int)size - 1, NULL));
 }
