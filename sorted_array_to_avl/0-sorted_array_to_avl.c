@@ -10,24 +10,24 @@
  */
 avl_t *build_avl(int *array, int start, int end, avl_t *parent)
 {
-    int mid;
-    avl_t *root;
+int mid;
+avl_t *root;
 
-    if (start > end)
-    return (NULL);
+if (start > end)
+return (NULL);
 
-    mid = (start + end) / 2;
+mid = (start + end) / 2;
 
-    root = malloc(sizeof(avl_t));
-    if (!root)
-    return (NULL);
+root = malloc(sizeof(avl_t));
+if (!root)
+return (NULL);
 
-    root->n = array[mid];
-    root->parent = parent;
-    root->left = build_avl(array, start, mid - 1, root);
-    root->right = build_avl(array, mid + 1, end, root);
+root->n = array[mid];
+root->parent = parent;
+root->left = build_avl(array, start, mid - 1, root);
+root->right = build_avl(array, mid + 1, end, root);
 
-    return (root);
+return (root);
 }
 
 /**
@@ -38,8 +38,8 @@ avl_t *build_avl(int *array, int start, int end, avl_t *parent)
  */
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
-    if (!array || size == 0)
-    return (NULL);
+if (!array || size == 0)
+return (NULL);
 
-    return (build_avl(array, 0, (int)size - 1, NULL));
+return (build_avl(array, 0, (int)size - 1, NULL));
 }

@@ -11,21 +11,21 @@
  */
 void print_tree(const binary_tree_t *tree, int space)
 {
-    int i;
+int i;
 
-    if (tree == NULL)
-        return;
+if (tree == NULL)
+return;
 
-    space += SPACE;
+space += SPACE;
 
-    print_tree(tree->right, space);
+print_tree(tree->right, space);
 
-    printf("\n");
-    for (i = SPACE; i < space; i++)
-        printf(" ");
-    printf("(%03d)\n", tree->n);
+printf("\n");
+for (i = SPACE; i < space; i++)
+printf(" ");
+printf("(%03d)\n", tree->n);
 
-    print_tree(tree->left, space);
+print_tree(tree->left, space);
 }
 
 /**
@@ -34,5 +34,5 @@ void print_tree(const binary_tree_t *tree, int space)
  */
 void binary_tree_print(const binary_tree_t *tree)
 {
-    print_tree(tree, 0);
+print_tree(tree, 0);
 }
