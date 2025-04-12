@@ -6,12 +6,12 @@
  */
 void free_skiplist(skiplist_t *list)
 {
-    skiplist_t *tmp;
+skiplist_t *tmp;
 
-    while (list)
-    {
-        tmp = list->next;
-        free(list);
-        list = tmp;
-    }
+while (list)
+{
+    tmp = list->next;
+    free(list);
+    list = tmp;
+}
 }
