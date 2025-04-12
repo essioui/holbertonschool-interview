@@ -36,7 +36,8 @@ while (end->next)
 end = end->next;
 }
 
-printf("Value found between indexes [%lu] and [%lu]\n", node->index, end->index);
+printf("Value found between indexes [%lu] and [%lu]\n",
+node->index, end->index);
 
 /* Linear search in the range */
 while (node && node->index <= end->index)
