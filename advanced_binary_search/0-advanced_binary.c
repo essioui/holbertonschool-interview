@@ -15,7 +15,8 @@ void print_array(int *array, int low, int high)
     for (i = low; i <= high; i++)
     {
         printf("%d", array[i]);
-        if (i < high) // Only print comma if it's not the last element
+        // Avoid a trailing comma after the last element
+        if (i < high)
             printf(", ");
     }
     printf("\n");
