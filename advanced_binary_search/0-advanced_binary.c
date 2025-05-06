@@ -15,7 +15,7 @@ void print_array(int *array, int low, int high)
     for (i = low; i <= high; i++)
     {
         printf("%d", array[i]);
-        if (i < high)
+        if (i < high) // Only print comma if it's not the last element
             printf(", ");
     }
     printf("\n");
@@ -50,7 +50,7 @@ int recursive_search(int *array, int low, int high, int value)
         if (mid == low || array[mid - 1] != value)
             return (mid);
         // Otherwise, continue searching in the left half.
-        return (recursive_search(array, low, mid, value));
+        return (recursive_search(array, low, mid - 1, value));
     }
     // If the value is larger than the middle element, search in the right half.
     else if (array[mid] < value)
