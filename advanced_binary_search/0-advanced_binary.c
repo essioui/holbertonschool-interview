@@ -13,7 +13,7 @@ void print_array(int *array, int left, int right)
     for (int i = left; i <= right; i++)
     {
         printf("%d", array[i]);
-        if (i < right)  // Ensure that we don't print a comma after the last element
+        if (i < right)  // Ensure no comma after the last element
             printf(", ");
     }
     printf("\n");
