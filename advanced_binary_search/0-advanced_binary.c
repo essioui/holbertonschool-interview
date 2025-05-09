@@ -13,7 +13,7 @@ void print_array(int *array, int left, int right)
     for (int i = left; i <= right; i++)
     {
         printf("%d", array[i]);
-        if (i < right)
+        if (i < right)  // Ensure that we don't print a comma after the last element
             printf(", ");
     }
     printf("\n");
@@ -43,12 +43,12 @@ int recursive_search(int *array, int left, int right, int value)
     {
         if (mid == left || array[mid - 1] != value)
             return (mid);
-        return (recursive_search(array, left, mid, value));
+        return (recursive_search(array, left, mid, value)); // Search left side
     }
     else if (array[mid] < value)
-        return (recursive_search(array, mid + 1, right, value));
+        return (recursive_search(array, mid + 1, right, value)); // Search right side
     else
-        return (recursive_search(array, left, mid - 1, value));
+        return (recursive_search(array, left, mid - 1, value)); // Search left side
 }
 
 /**
