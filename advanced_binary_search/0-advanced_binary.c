@@ -2,10 +2,10 @@
 #include "search_algos.h"
 
 /**
- * print_array - Prints the current subarray being searched
- * @array: Pointer to the array
- * @left: Starting index
- * @right: Ending index
+ * print_array - Prints the array between indices left and right inclusive
+ * @array: pointer to array
+ * @left: starting index
+ * @right: ending index
  */
 void print_array(int *array, int left, int right)
 {
@@ -20,13 +20,13 @@ void print_array(int *array, int left, int right)
 }
 
 /**
- * recursive_search - Recursively searches for the first occurrence
- * @array: Pointer to the array
- * @left: Left index of subarray
- * @right: Right index of subarray
- * @value: Target value
+ * recursive_search - recursively searches for the first occurrence of value
+ * @array: pointer to the array
+ * @left: left index
+ * @right: right index
+ * @value: value to search for
  *
- * Return: Index of first occurrence, or -1 if not found
+ * Return: index of first occurrence or -1 if not found
  */
 int recursive_search(int *array, int left, int right, int value)
 {
@@ -36,31 +36,28 @@ int recursive_search(int *array, int left, int right, int value)
 		return (-1);
 
 	print_array(array, left, right);
+
 	mid = left + (right - left) / 2;
 
 	if (array[mid] == value)
 	{
 		if (mid == left || array[mid - 1] != value)
 			return (mid);
-		return (recursive_search(array, left, mid - 1, value));
+		return (recursive_search(array, left, mid, value));
 	}
 	else if (array[mid] < value)
-	{
 		return (recursive_search(array, mid + 1, right, value));
-	}
 	else
-	{
 		return (recursive_search(array, left, mid - 1, value));
-	}
 }
 
 /**
- * advanced_binary - Searches for first occurrence of value using binary search
- * @array: Pointer to the array
- * @size: Size of the array
- * @value: Value to search for
+ * advanced_binary - wrapper to start recursive search
+ * @array: pointer to the array
+ * @size: size of the array
+ * @value: value to search for
  *
- * Return: Index of first occurrence, or -1 if not found
+ * Return: index of first occurrence or -1 if not found
  */
 int advanced_binary(int *array, size_t size, int value)
 {
