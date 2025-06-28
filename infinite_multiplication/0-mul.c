@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include "holberton.h"
 
 /**
  * is_number - Checks if a string contains digits only
