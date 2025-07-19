@@ -1,5 +1,6 @@
 #include "binary_trees.h"
 #include <stdlib.h> /* For abs() */
+#include <limits.h>
 
 /**
  * binary_tree_height - Calculates the height of a binary tree
@@ -9,13 +10,15 @@
  */
 static int binary_tree_height(const binary_tree_t *tree)
 {
-    if (!tree)
-        return -1;
+	int left_height, right_height;
 
-    int left_height = binary_tree_height(tree->left);
-    int right_height = binary_tree_height(tree->right);
+	if (!tree)
+		return (-1);
 
-    return (left_height > right_height ? left_height : right_height) + 1;
+	left_height = binary_tree_height(tree->left);
+	right_height = binary_tree_height(tree->right);
+
+	return ((left_height > right_height ? left_height : right_height) + 1);
 }
 
 /**
@@ -28,14 +31,14 @@ static int binary_tree_height(const binary_tree_t *tree)
  */
 static int is_bst_util(const binary_tree_t *tree, int min, int max)
 {
-    if (!tree)
-        return 1;
+	if (!tree)
+		return (1);
 
-    if (tree->n <= min || tree->n >= max)
-        return 0;
+	if (tree->n <= min || tree->n >= max)
+		return (0);
 
-    return is_bst_util(tree->left, min, tree->n) &&
-           is_bst_util(tree->right, tree->n, max);
+	return (is_bst_util(tree->left, min, tree->n) &&
+		is_bst_util(tree->right, tree->n, max));
 }
 
 /**
@@ -46,16 +49,18 @@ static int is_bst_util(const binary_tree_t *tree, int min, int max)
  */
 static int is_balanced(const binary_tree_t *tree)
 {
-    if (!tree)
-        return 1;
+	int left_height, right_height;
 
-    int left_height = binary_tree_height(tree->left);
-    int right_height = binary_tree_height(tree->right);
+	if (!tree)
+		return (1);
 
-    if (abs(left_height - right_height) > 1)
-        return 0;
+	left_height = binary_tree_height(tree->left);
+	right_height = binary_tree_height(tree->right);
 
-    return is_balanced(tree->left) && is_balanced(tree->right);
+	if (abs(left_height - right_height) > 1)
+		return (0);
+
+	return (is_balanced(tree->left) && is_balanced(tree->right));
 }
 
 /**
@@ -66,14 +71,14 @@ static int is_balanced(const binary_tree_t *tree)
  */
 int binary_tree_is_avl(const binary_tree_t *tree)
 {
-    if (!tree)
-        return 0;
+	if (!tree)
+		return (0);
 
-    if (!is_bst_util(tree, INT_MIN, INT_MAX))
-        return 0;
+	if (!is_bst_util(tree, INT_MIN, INT_MAX))
+		return (0);
 
-    if (!is_balanced(tree))
-        return 0;
+	if (!is_balanced(tree))
+		return (0);
 
-    return 1;
+	return (1);
 }
