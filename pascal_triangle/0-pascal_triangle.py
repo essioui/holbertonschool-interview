@@ -2,7 +2,6 @@
 """
 Pascal's Triangle
 """
-from typing import List
 
 
 def pascal_triangle(n):
